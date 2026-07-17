@@ -1,6 +1,6 @@
 import './App.css'
 import { useEffect, useState } from "react";
-
+import Navbar from './components/Navbar';
 
 function App() {
   const [book, setBooks] = useState([]);
@@ -14,15 +14,26 @@ useEffect(() => {
   return (
     <>
 
-      <h1>Mis books</h1>
+    <Navbar/>
+
+
+<div className="bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition duration-300">
+
 
       {book.map((data) => (
         <div key={data.id}>
-          <h3>{data.title}</h3>
-          <p>{data.description}</p>
+          <h3 className="font-bold text-xl">{data.title}</h3>
+          <p className="text-gray-500" >{data.description}</p>
+          <img
+    src={data.image}
+    alt={data.title}
+    width={200}
+/>
         </div>
-      ))}
 
+        
+      ))}
+</div>
     </>
   )
 }
