@@ -147,5 +147,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".onrender.com",
+    "localhost",
+    "127.0.0.1",]
 
