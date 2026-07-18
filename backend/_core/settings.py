@@ -52,13 +52,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'django.middleware.common.CommonMiddleware',
+
     
 ]
 
@@ -88,16 +89,11 @@ WSGI_APPLICATION = '_core.wsgi.application'
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
-        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
