@@ -6,9 +6,12 @@ import CategorySection from './components/CategorySection'
 import Footer from './components/Footer'
 
 function App() {
+
+  const API = import.meta.env.VITE_API_URL;
+
   const [book, setBooks] = useState([]);
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/books/")
+    fetch(`${API}/api/books/`)
       .then((response) => response.json())
       .then((data) => setBooks(data))
       .catch((error) => console.error(error));
