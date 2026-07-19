@@ -1,11 +1,11 @@
-function CategorySection({ title, books }) {
+function CategorySection({ books }) {
   return (
     <section className="bg-zinc-900 py-14">
 
       <div className="max-w-7xl mx-auto px-6">
 
         <h2 className="text-4xl font-bold uppercase text-white mb-8">
-          {title}
+          {books.title}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

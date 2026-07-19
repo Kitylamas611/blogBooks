@@ -9,7 +9,7 @@ function App() {
 
   const API = import.meta.env.VITE_API_URL;
 
-  const [book, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
   useEffect(() => {
     fetch(`${API}/api/books/`)
       .then((response) => response.json())
@@ -34,7 +34,7 @@ function App() {
 
 
 
-            {book.map((data) => (
+            {books.map((data) => (
               <article key={data.id} className='bg-white rounded-xl shadow-lg overflow-hidden mb-8'>
 
                 <img
@@ -67,7 +67,7 @@ function App() {
                 Más libros
               </h2>
 
-              {book.slice(0, 5).map((data) => (
+              {books.slice(0, 5).map((data) => (
                 <div
                   key={data.id}
                   className="flex gap-3 mb-4 border-b pb-4"
@@ -89,13 +89,13 @@ function App() {
 
           </aside>
 
-          <TrendingSection books={book} />
+          <TrendingSection books={books} />
 
          
 
         </div>
       </main>
-               <CategorySection books={book} />
+               <CategorySection books={books} />
 
               <Footer/>
 
